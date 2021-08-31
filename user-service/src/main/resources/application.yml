@@ -1,0 +1,7 @@
+server:
+  port : 8088
+
+spring:
+  application:
+    name: USER-SERVICE
+  zipkin: http://127.0.0.1:9411/
