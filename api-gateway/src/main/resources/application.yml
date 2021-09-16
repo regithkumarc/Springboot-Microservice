@@ -7,21 +7,21 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: USER-SERVICE
+        - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
           filters:
               args:
-                name: USER-SERVICE
+                name: user-service
                 fallbackuri: forward:/userServiceFallBack
-        - id: DEPARTMENT-SERVICE
+        - id: department-service
           uri: lb://DEPARTMENT-SERVICE
           predicates:
             - Path=/departments/**
           filters:
               args:
-                name: DEPARTMENT-SERVICE
+                name: department-service
                 fallbackuri: forward:/departmentServiceFallBack
 
 hystrix:

@@ -1,16 +1,12 @@
 package com.cprm.apigateway;
 
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@EnableHystrix
+//@EnableHystrix
 @Configuration
 public class SpringCloudConfig {
 
-    @Bean
+    /*@Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/users/**")
@@ -20,7 +16,7 @@ public class SpringCloudConfig {
                         .filters(f -> f.addRequestHeader("hello","world"))
                         .uri("lb://DEPARTMENT-SERVICE"))
                 .build();
-    }
+    }*/
 
 /*    @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
