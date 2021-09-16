@@ -14,7 +14,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    UserRespository userRespository;
+    public UserRespository userRespository;
     @Autowired
     RestTemplate restTemplate;
 

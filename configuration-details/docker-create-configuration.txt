@@ -1,0 +1,37 @@
+Docker 
+
+https://www.youtube.com/watch?v=FlSup_eelYE&t=285s
+
+Login :
+
+docker login
+
+username :
+
+password :
+
+Create local image :
+
+docker build -t user-service .
+
+Verify the image :
+
+docker images
+
+tag :
+
+docker tag user-service-0.0.1 regithcprm/user-service-0.0.1
+
+push :
+
+docker push regithcprm/user-service-0.0.1
+
+Delete Local Image :
+
+docker rmi user-service-0.0.1 regithcprm/user-service-0.0.1
+
+Pull Images :
+
+docker run -p 8088:8088 regithcprm/user-service-0.0.1
+
+
