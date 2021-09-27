@@ -5,6 +5,7 @@ import com.cprm.userservice.entity.User;
 import com.cprm.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +17,17 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    Environment environment;
 
     @GetMapping
     public String getMessage(){
         return "User API working";
+    }
+
+    @GetMapping("/getPort")
+    public String getEnvironment(){
+        return environment.getProperty("local.server.port");
     }
 
     @GetMapping("/getAllUsers")
