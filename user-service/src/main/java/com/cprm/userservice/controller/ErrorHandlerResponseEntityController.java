@@ -16,7 +16,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/error")
-@Validated
 public class ErrorHandlerResponseEntityController {
 
     @Autowired
@@ -33,11 +32,11 @@ public class ErrorHandlerResponseEntityController {
         return new ResponseEntity<ErrorHandlerVO>(errorHandlerVO, HttpStatus.OK);
     }
 
-    @RequestMapping(value  = "/addErrorWithValid")
+/*    @RequestMapping(value  = "/addErrorWithValid")
     public ResponseEntity<ErrorHandlerVO> addErrorWithValid(@RequestBody @Valid ErrorHandlerVO errorHandlerVO) {
         //errorHandlerRepository.save(errorHandlerVO);
         return new ResponseEntity<ErrorHandlerVO>(errorHandlerVO, HttpStatus.OK);
-    }
+    }*/
 
     @PostMapping("/add")
     public ResponseEntity<ErrorHandlerVO> add(@RequestBody @Valid ErrorHandlerVO errorHandlerVO) throws NotFoundException {

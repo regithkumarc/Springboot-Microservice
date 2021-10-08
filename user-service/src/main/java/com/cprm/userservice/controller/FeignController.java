@@ -5,6 +5,7 @@ import com.cprm.userservice.exception.ErrorMessages;
 import com.cprm.userservice.exception.UserServiceException;
 import com.cprm.userservice.feign.FeignClient;
 import com.cprm.userservice.repository.UserDetailsRepository;
+import io.swagger.annotations.Api;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -13,10 +14,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/userDetails")
+@CrossOrigin("*")
 public class FeignController {
 
     @Autowired
@@ -43,8 +46,8 @@ public class FeignController {
     }
 
     @GetMapping("/getAllUsers")
-    public ResponseEntity<UserDetails> getAllUsers(){
-        return feignClient.getAllUsers();
+    public ResponseEntity<List<UserDetails>> getAllUsers(){
+        return new ResponseEntity<List<UserDetails>>(userDetailsRepository.findAll(),HttpStatus.OK);
     }
 
     @GetMapping("/getUserById/{id}")
@@ -53,6 +56,14 @@ public class FeignController {
         if(!userDetails.isPresent())
             throw new UserServiceException(ErrorMessages.NO_DATA_FOUND.getErrorMessage());
         //return ResponseEntity.status(HttpStatus.OK).body(userDetails);
+        return new ResponseEntity<UserDetails>(userDetails.get(),HttpStatus.OK);
+    }
+
+    @GetMapping("/getUserByEmail/{email}")
+    public ResponseEntity<UserDetails> getuserByEmail(@PathVariable("email") String email) throws  NotFoundException {
+        Optional<UserDetails> userDetails = userDetailsRepository.findByEmail(email);
+        if(!userDetails.isPresent())
+            throw new UserServiceException((ErrorMessages.NO_DATA_FOUND.getErrorMessage()));
         return new ResponseEntity<UserDetails>(userDetails.get(),HttpStatus.OK);
     }
 

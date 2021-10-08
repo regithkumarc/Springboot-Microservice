@@ -32,5 +32,11 @@ public class UserDetails {
     private String email;
     @Min(value = 18,message = "Age should not be less than 18")
     private String age;
+    @NotNull(message = "Password should not be Null")
+    @NotEmpty(message = "Password should not be empty")
+    private String password;
+    @NotNull(message = "Confirm Password should not be Null")
+    @NotEmpty(message = "Confirm Password should not be empty")
+    private String confirmPassword;
 }
 
